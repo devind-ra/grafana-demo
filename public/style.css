@@ -1,0 +1,54 @@
+
+/* Scrollable log box */
+.log-box {
+  max-height: 220px;
+  overflow-y: auto;
+  background-color: var(--pico-card-background-color);
+  border: 1px solid var(--pico-border-color);
+  border-radius: var(--pico-border-radius);
+  padding: var(--pico-spacing);
+  font-family: var(--pico-font-family-monospace);
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+.log-entry {
+  padding: 0.2rem 0;
+  border-bottom: 1px dashed var(--pico-muted-border-color);
+}
+
+.log-entry:last-child {
+  border-bottom: none;
+}
+
+.log-entry.ok { color: var(--pico-ins-color); }
+.log-entry.slow { color: #d97706; }
+.log-entry.error { color: var(--pico-del-color); }
+.log-entry.system { color: var(--pico-muted-color); }
+
+button.btn-ok {
+  background-color: var(--pico-ins-color);
+  border-color: var(--pico-ins-color);
+}
+
+button.btn-slow {
+  background-color: #d97706;
+  border-color: #d97706;
+}
+
+button.btn-error {
+  background-color: var(--pico-del-color);
+  border-color: var(--pico-del-color);
+}
+
+button.btn-item {
+  background-color: var(--pico-secondary);
+  border-color: var(--pico-secondary);
+}
+
+footer nav ul {
+  display: flex;
+  gap: 1.5rem;
+  padding-left: 0;
+  list-style: none;
+}

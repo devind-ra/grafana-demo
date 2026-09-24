@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="color-scheme" content="light dark">
+  <title>Grafana Demo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="">
+</head>
+
+<body>
+  <main class="container">
+    <header>
+        <h1>Grafana Demo Application</h1>
+        <p>Simulating traffic to test metrics</p>
+    </header>
+    
+    <article>
+        <header>Generate Traffic</header>
+        <form onsubmit="return false;">
+             <label for="requestPerClick">
+                Requests per click (1 to 200)
+                <input type="number" id="requestPerClick" name="requestPerClick" min="1" max="200" value="20">
+            </label>
+
+            <label>Endpoint Simulation</label>
+                <div role="group">
+                    <button id="btnOk" class="contrast" onClick="sendTraffic('OK')">OK (200)</button>
+                    <button id="btnSlow" class="secondary" onClick="sendTraffic('Slow')">Slow (Delay)</button>
+                    <button id="btnError" class="outline contrast" onClick="sendTraffic('Error')">Error (50x)</button>
+                    <button id="btnItem" class="outline" onClick="sendTraffic('Item')">Item</button>
+            </div>
+        </form>
+    </article>
+
+    <article>
+      <h2>Background traffic</h2>
+      <fieldset>
+        <label for="bg-switch">
+          <input type="checkbox" id="bg-switch" role="switch" onchange="toggleBackgroundTraffic(this.checked)">
+          Enable background auto-traffic
+        </label>
+      </fieldset>
+
+      <label for="rps-range">
+        Requests per second: <span id="rps-value">5</span>
+        <input type="range" id="rps-range" min="1" max="50" value="5" oninput="updateRPS(this.value)">
+      </label>
+    </article>
+
+    <article>
+      <h2>Results</h2>
+      <small id="summary-line">
+        Sent <strong id="stat-total">0</strong> · 
+        200s: <strong id="stat-200">0</strong> · 
+        500s: <strong id="stat-500">0</strong>
+      </small>
+      
+      <div id="log-box" class="log-box">
+        <div class="log-entry system">Ready to send requests.</div>
+      </div>
+    </article>
+    <script src="js/main.js"></script>
+  </main>
+</body>
+
+</html>
