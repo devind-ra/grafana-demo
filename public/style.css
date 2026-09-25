@@ -1,4 +1,19 @@
-/* Scrollable log box */
+:root {
+  --pico-font-size: 87.5%;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --pico-font-size: 93.75%;
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --pico-font-size: 100%;
+  }
+}
+
 .log-box {
   max-height: 220px;
   overflow-y: auto;
@@ -33,24 +48,63 @@
   color: var(--pico-muted-color);
 }
 
+button.btn-ok,
+button.btn-slow,
+button.btn-error,
+button.btn-item {
+  color: #030303;
+}
+
 button.btn-ok {
-  background-color: var(--pico-ins-color);
-  border-color: var(--pico-ins-color);
+  background-color: #1CB554;
+  border-color: #15803d;
 }
 
 button.btn-slow {
-  background-color: #d97706;
-  border-color: #d97706;
+  background-color: #ff8222;
+  border-color: #b45309;
 }
 
 button.btn-error {
-  background-color: var(--pico-del-color);
-  border-color: var(--pico-del-color);
+  background-color: #ED7D7D;
+  border-color: #b91c1c;
 }
 
 button.btn-item {
-  background-color: var(--pico-secondary);
-  border-color: var(--pico-secondary);
+  background-color: #B3C7FF;
+  border-color: #1d4ed8;
+}
+
+button.btn-ok,
+button.btn-slow,
+button.btn-error,
+button.btn-item {
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+button.btn-ok:hover,
+button.btn-slow:hover,
+button.btn-error:hover,
+button.btn-item:hover {
+  color: #fff;
+}
+
+button.btn-ok:hover {
+  background-color: #15803d;
+}
+
+button.btn-slow:hover {
+  background-color: #b45309;
+}
+
+button.btn-error:hover {
+  background-color: #b91c1c;
+}
+
+button.btn-item:hover {
+  background-color: #1d4ed8;
 }
 
 footer nav ul {
@@ -58,4 +112,73 @@ footer nav ul {
   gap: 1.5rem;
   padding-left: 0;
   list-style: none;
+}
+
+main.container {
+  padding-top: var(--pico-spacing);
+  padding-bottom: var(--pico-spacing);
+}
+
+main > header h1 {
+  font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem);
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+.log-entry {
+  overflow-wrap: anywhere;
+}
+
+#summary-line {
+  display: block;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  form div[role="group"] {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    box-shadow: none;
+  }
+
+  form div[role="group"] > button {
+    width: 100%;
+    margin: 0;
+    border-radius: var(--pico-border-radius) !important;
+  }
+
+  .log-box {
+    max-height: 50vh;
+  }
+}
+
+@media (max-width: 480px) {
+  main.container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  article {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  form div[role="group"] {
+    grid-template-columns: 1fr;
+  }
+
+  form div[role="group"] > button {
+    min-height: 44px;
+  }
+
+  .log-box {
+    font-size: 0.8rem;
+    padding: 0.75rem;
+  }
+
+  footer nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
     <title>Grafana Demo</title>
     <link
@@ -37,24 +37,28 @@
 
           <label>Endpoint Simulation</label>
           <div role="group">
-            <button id="btnOk" class="contrast" onClick="sendTraffic('OK')">
+            <button id="btnOk" class="btn-ok" onClick="sendTraffic('OK')">
               OK (200)
             </button>
             <button
               id="btnSlow"
-              class="secondary"
+              class="btn-slow"
               onClick="sendTraffic('Slow')"
             >
               Slow (Delay)
             </button>
             <button
               id="btnError"
-              class="outline contrast"
+              class="btn-error"
               onClick="sendTraffic('Error')"
             >
               Error (50x)
             </button>
-            <button id="btnItem" class="outline" onClick="sendTraffic('Item')">
+            <button
+              id="btnItem"
+              class="btn-item"
+              onClick="sendTraffic('Item')"
+            >
               Item
             </button>
           </div>
