@@ -31,6 +31,7 @@ const httpRequestsInFlight = new client.Gauge({
 });
 
 app.use(express.static("public"));
+app.use(express.json());
 app.use((req, res, next) => {
   if (req.path === "/metrics") return next();
 
@@ -85,6 +86,27 @@ app.get("/api/items/:id", (req, res) => {
   }
   res.json({ id: req.params.id });
 });
+
+app.put("/api/items/:id", (req, res) => {
+  if (Number(req.params.id) > 900) {
+    return res.status(404).json({ error: "Item not found" });
+  }
+  res.status(200).json({ id: req.params.id, ...req.body, replaced: true });
+})
+
+app.patch("/api/items/:id", (req, res) => {
+  if (!req.body || Object.keys(req.body).length === 0) {
+    return res.status(400).json({ error: "No fields to update" });
+  }
+  if (Number(req.params.id) > 900) {
+    return res.status(404).json({ error: "Item not found" });
+  }
+  res.status(200).json({ id: req.params.id, updated: Object.keys(req.body) });
+})
+
+app.post("/app/items", (req, res) => res.status(201).json({ id: Date.now(), ...req.body }));
+
+app.delete("/api/items/:id", (req, res) => res.status(204).end());
 
 app.listen(PORT, () => {
   console.log(`grafana-demo listening on http://localhost:${PORT}`);

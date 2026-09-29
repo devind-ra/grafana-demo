@@ -51,7 +51,9 @@
 button.btn-ok,
 button.btn-slow,
 button.btn-error,
-button.btn-item {
+button.btn-item,
+button.btn-put,
+button.btn-patch {
   color: #030303;
 }
 
@@ -75,10 +77,22 @@ button.btn-item {
   border-color: #1d4ed8;
 }
 
+button.btn-put {
+  background-color: #C9B3FF;
+  border-color: #6d28d9;
+}
+
+button.btn-patch {
+  background-color: #8FE3D6;
+  border-color: #0f766e;
+}
+
 button.btn-ok,
 button.btn-slow,
 button.btn-error,
-button.btn-item {
+button.btn-item,
+button.btn-put,
+button.btn-patch {
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
@@ -87,7 +101,9 @@ button.btn-item {
 button.btn-ok:hover,
 button.btn-slow:hover,
 button.btn-error:hover,
-button.btn-item:hover {
+button.btn-item:hover,
+button.btn-put:hover,
+button.btn-patch:hover {
   color: #fff;
 }
 
@@ -107,6 +123,19 @@ button.btn-item:hover {
   background-color: #1d4ed8;
 }
 
+button.btn-put:hover {
+  background-color: #6d28d9;
+}
+
+button.btn-patch:hover {
+  background-color: #0f766e;
+}
+
+form div[role="group"] > button {
+  flex: 1 1 0;
+  white-space: nowrap;
+}
+
 footer nav ul {
   display: flex;
   gap: 1.5rem;
@@ -122,6 +151,10 @@ main.container {
 main > header h1 {
   font-size: clamp(1.5rem, 4vw + 1rem, 2.5rem);
   margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+main > header p {
   text-align: center;
 }
 

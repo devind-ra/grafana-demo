@@ -1,8 +1,11 @@
+const randomId = () => Math.floor(Math.random() * 1000) + 1;
 const ENDPOINTS = {
-  OK: () => "/api/ok",
-  Slow: () => "/api/slow",
-  Error: () => "/api/error",
-  Item: () => `/api/items/${Math.floor(Math.random() * 1000) + 1}`,
+  OK:    () => ({ method: "GET", url: "/api/ok" }),
+  Slow:  () => ({ method: "GET", url: "/api/slow" }),
+  Error: () => ({ method: "GET", url: "/api/error" }),
+  Item:  () => ({ method: "GET", url: `/api/items/${randomId()}` }),
+  Put:   () => ({ method: "PUT",   url: `/api/items/${randomId()}`, body: { name: "Widget", price: 10 } }),
+  Patch: () => ({ method: "PATCH", url: `/api/items/${randomId()}`, body: { price: 12 } }),
 };
 
 const MAX_LOG_ENTRIES = 200;
@@ -37,11 +40,15 @@ function recordResult(status) {
 }
 
 async function sendRequest(type) {
-  const url = ENDPOINTS[type]();
+  const { method, url, body } = ENDPOINTS[type]();
   const start = performance.now();
 
   try {
-    const res = await fetch(url);
+    const res = await fetch(url, {
+      method,
+      headers: body ? { "Content-Type": "application/json" } : undefined,
+      body: body ? JSON.stringify(body) : undefined,
+    });
     const ms = Math.round(performance.now() - start);
     recordResult(res.status);
 
@@ -49,10 +56,10 @@ async function sendRequest(type) {
     if (!res.ok) logType = "error";
     else if (ms >= SLOW_THRESHOLD_MS) logType = "slow";
 
-    log(`GET ${url} → ${res.status} (${ms}ms)`, logType);
+    log(`${method} ${url} → ${res.status} (${ms}ms)`, logType);
   } catch (err) {
     recordResult(0);
-    log(`GET ${url} → network error: ${err.message}`, "error");
+    log(`${method} ${url} → network error: ${err.message}`, "error");
   }
 }
 
