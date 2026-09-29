@@ -20,7 +20,7 @@ const httpRequestDuration = new client.Histogram({
   name: "http_request_duration_seconds",
   help: "HTTP request duration in seconds",
   labelNames: ["method", "route", "status_code"],
-  buckets: [0.01, 0.05, 0.1, 0.25, 0.5, 1, 2.5, 5],
+  buckets: [0.01, 0.05, 0.1, 0.25, 0.5, 1, 1.5, 2, 2.5, 5],
   registers: [register],
 });
 
@@ -80,6 +80,9 @@ app.get("/api/error", (req, res) => {
 });
 
 app.get("/api/items/:id", (req, res) => {
+  if (Number(req.params.id) > 900) {
+    return res.status(404).json({ error: "Item not found" });
+  }
   res.json({ id: req.params.id });
 });
 
