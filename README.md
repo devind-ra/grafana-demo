@@ -54,6 +54,24 @@ To login enter the following credentials:
 
 **Press 'Skip' if prompted to change the password**
 
+### Application
+
+<img width="1727" height="961" alt="image" src="https://github.com/user-attachments/assets/886d9c87-5741-40d3-9eb6-de7ff6602291" />
+
+
+Application can be interacted with in two ways:
+- Enter number of requests to be created per click and press desired endpoint button
+- Select range for requests to be created per second and enable auto-traffic simulation
+
+### Grafana
+
+<img width="1727" height="947" alt="image" src="https://github.com/user-attachments/assets/9033fedc-7724-4d13-96b8-91817eec36c2" />
+
+
+Grafana dashboard currently contains two tabs:
+- Service Health: Contains metrics such as Breakdown of Status Codes, Error Metrics, Latency Metrics, Request Metrics and more.
+- Resources and Processes: Contains Uptime Metrics, App Metrics, Event Loop Lag, Garbage Collection and Active Handles and Requests.
+
 ## Authors
 
 Devin Rathod
