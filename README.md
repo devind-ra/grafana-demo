@@ -35,6 +35,7 @@ Ensure that docker is running, run the following command:
 ```
 docker compose up -d
 ```
+
 To start the demo application:
 ```
 npm run dev
@@ -53,6 +54,11 @@ To login enter the following credentials:
 `admin` - for both username and password
 
 **Press 'Skip' if prompted to change the password**
+
+To stop the docker containers, run the following command:
+```
+docker compose down
+```
 
 ### Application
 
