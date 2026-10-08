@@ -71,12 +71,13 @@ Application can be interacted with in two ways:
 
 ### Grafana
 
-<img width="1727" height="947" alt="image" src="https://github.com/user-attachments/assets/9033fedc-7724-4d13-96b8-91817eec36c2" />
-
-
 Grafana dashboard currently contains two tabs:
 - Service Health: Contains metrics such as Breakdown of Status Codes, Error Metrics, Latency Metrics, Request Metrics and more.
 - Resources and Processes: Contains Uptime Metrics, App Metrics, Event Loop Lag, Garbage Collection and Active Handles and Requests.
+
+<img width="1727" height="947" alt="image" src="https://github.com/user-attachments/assets/9033fedc-7724-4d13-96b8-91817eec36c2" />
+
+<img width="1728" height="961" alt="image" src="https://github.com/user-attachments/assets/c697cc21-dcff-4cf4-be56-61be68c09343" />
 
 ## Authors
 
