@@ -9,10 +9,10 @@ To explore how Grafana can make use of metrics directly, an application was deve
 This project utilises the following technologies:
 - Node.js - locally starting application
 - Express - serves API and static frontend
-- Prometheus Client - used for data collection from application using /metrics endpoint
+- Prometheus Client Library - Exposes the metrics so Prometheus can scrape them
 - HTML, JavaScript - standard for web page and app development
 - CSS with Pico CSS styling - styling for sample application
-- Docker - containerising application to work with prometheus client and grafana
+- Docker - containerising Prometheus and Grafana application
 - Grafana - monitoring tool containing dashboards for insights
 
 ## Getting Started
