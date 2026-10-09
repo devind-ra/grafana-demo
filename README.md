@@ -14,6 +14,7 @@ This project utilises the following technologies:
 - CSS with Pico CSS styling - styling for sample application
 - Docker - containerising Prometheus and Grafana application
 - Grafana - monitoring tool containing dashboards for insights
+- Mailpit - emailing tool (currently only for local emails to showcase how emails can be integrated)
 
 ## Getting Started
 
@@ -78,6 +79,12 @@ Grafana dashboard currently contains two tabs:
 <img width="1727" height="947" alt="image" src="https://github.com/user-attachments/assets/9033fedc-7724-4d13-96b8-91817eec36c2" />
 
 <img width="1728" height="961" alt="image" src="https://github.com/user-attachments/assets/c697cc21-dcff-4cf4-be56-61be68c09343" />
+
+### Mailpit
+
+To see emails with the uptime of the application, visting the following locally hosted service can help send alerts to an email from Grafana:
+
+`localhost:8025`
 
 ## Authors
 
