@@ -1,0 +1,54 @@
+apiVersion: 1
+
+contactPoints:
+  - orgId: 1
+    name: Email alerts
+    receivers:
+      - uid: email-alerts
+        type: email
+        settings:
+          addresses: you@example.com
+          singleEmail: true
+
+policies:
+  - orgId: 1
+    receiver: Email alerts
+    group_by: ["alertname"]
+
+groups:
+  - orgId: 1
+    name: app-availability
+    folder: Alerts
+    interval: 30s
+    rules:
+      - uid: app-down
+        title: App down
+        condition: C
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: prometheus
+            model:
+              refId: A
+              expr: up{job="grafana-demo"}
+              instant: true
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              refId: C
+              type: threshold
+              expression: A
+              conditions:
+                - evaluator:
+                    type: lt
+                    params: [1]
+        for: 1m
+        noDataState: Alerting
+        execErrState: Error
+        labels:
+          severity: critical
+        annotations:
+          summary: "{{ $labels.instance }} is down"
+          description: "Prometheus has not been able to scrape {{ $labels.instance }} for over 1 minute."
